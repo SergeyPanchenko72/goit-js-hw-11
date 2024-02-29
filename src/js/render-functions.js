@@ -1,7 +1,7 @@
-import { gallery, loader } from '../main';
+import { loaderForm } from '../main';
 
 export function galleryElements(element) {
-  console.log(element);
+  loaderForm.classList.remove('loader');
   return element
     .map(
       ({
@@ -13,31 +13,28 @@ export function galleryElements(element) {
         comments,
         downloads,
       }) => {
-        return `<li>
-        <a href="${largeImageURL}"><img src="${webformatURL}" alt="${tags}" /></a>
-        <ul>
-          <li>
-            <p>Likes</p>
-            <p>${likes}</p>
+        return `<li class="gallery-item">
+        <a href="${largeImageURL}"><img class="gallery-image" src="${webformatURL}" alt="${tags}" /></a>
+        <ul class="parameters">
+          <li class="parameter-list">
+            <p class="img-parameter">Likes</p>
+            <p class="img-parameter-quantity">${likes}</p>
           </li>
-          <li>
-            <p>Views</p>
-            <p>${views}</p>
+          <li class="parameter-list">
+            <p class="img-parameter">Views</p>
+            <p class="img-parameter-quantity">${views}</p>
           </li>
-          <li>
-            <p>Comments</p>
-            <p>${comments}</p>
+          <li class="parameter-list">
+            <p class="img-parameter">Comments</p>
+            <p class="img-parameter-quantity">${comments}</p>
           </li>
-          <li>
-            <p>downloads</p>
-            <p>${downloads}</p>
+          <li class="parameter-list">
+            <p class="img-parameter">Downloads</p>
+            <p class="img-parameter-quantity">${downloads}</p>
           </li>
         </ul>
       </li>`;
       }
     )
     .join('');
-
-  //   gallery.innerHTML = collection;
-  //   loader.classList.remove(loader);
 }
