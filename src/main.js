@@ -23,7 +23,7 @@ function onformSearchSubmit(event) {
   photosGallery().then(data => {
     if (data.total === 0) {
       iziToast.error({
-        iconUrl: './img/error.svg',
+        iconUrl: '../img/error.svg',
         messageColor: '#ffffff',
         message:
           'Sorry, there are no images matching your search query. Please try again!',
