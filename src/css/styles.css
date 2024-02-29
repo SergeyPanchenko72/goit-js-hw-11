@@ -115,7 +115,6 @@ button:hover {
   display: flex;
   gap: 28px;
   justify-content: center;
-  font-family: 'Montserrat';
 }
 .img-parameter {
   text-align: center;
