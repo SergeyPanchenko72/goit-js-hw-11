@@ -3,8 +3,11 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import { photosGallery } from './js/pixabay-api';
 import { galleryElements } from './js/render-functions';
+import cross from './img/error.svg';
+
 const formSearch = document.querySelector('.form');
 export const inputSearch = document.querySelector('input');
 export const loaderForm = document.querySelector('.form-load');
@@ -23,7 +26,7 @@ function onformSearchSubmit(event) {
   photosGallery().then(data => {
     if (data.total === 0) {
       iziToast.error({
-        iconUrl: './img/error.svg',
+        iconUrl: cross,
         messageColor: '#ffffff',
         message:
           'Sorry, there are no images matching your search query. Please try again!',
