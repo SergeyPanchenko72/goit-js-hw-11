@@ -28,10 +28,10 @@ function onformSearchSubmit(event) {
   loaderForm.innerHTML = null;
   loaderForm.classList.add('loader');
 
-  getsGalleryImg(inputValue).then(data => {
-    if (data.total === 0) {
-      iziToast
-        .error({
+  getsGalleryImg(inputValue)
+    .then(data => {
+      if (data.total === 0) {
+        iziToast.error({
           iconUrl: cross,
           messageColor: '#ffffff',
           message:
@@ -42,17 +42,17 @@ function onformSearchSubmit(event) {
           layout: 2,
           maxWidth: 380,
           theme: 'dark',
-        })
-        .catch(error => {
-          console.log(error);
         });
-    }
-    gallery.innerHTML = galleryElements(data.hits);
-    const lightbox = new SimpleLightbox('.gallery a', {
-      captionsData: 'alt',
-      captionDelay: 250,
+      }
+      gallery.innerHTML = galleryElements(data.hits);
+      const lightbox = new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
+        captionDelay: 250,
+      });
+      lightbox.refresh();
+    })
+    .catch(error => {
+      console.log(error);
     });
-    lightbox.refresh();
-  });
   inputSearch.value = '';
 }
