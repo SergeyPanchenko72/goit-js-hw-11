@@ -30,18 +30,22 @@ function onformSearchSubmit(event) {
 
   getsGalleryImg(inputValue).then(data => {
     if (data.total === 0) {
-      iziToast.error({
-        iconUrl: cross,
-        messageColor: '#ffffff',
-        message:
-          'Sorry, there are no images matching your search query. Please try again!',
-        backgroundColor: '#EF4040',
-        position: 'topRight',
-        messageSize: 16,
-        layout: 2,
-        maxWidth: 380,
-        theme: 'dark',
-      });
+      iziToast
+        .error({
+          iconUrl: cross,
+          messageColor: '#ffffff',
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          backgroundColor: '#EF4040',
+          position: 'topRight',
+          messageSize: 16,
+          layout: 2,
+          maxWidth: 380,
+          theme: 'dark',
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
     gallery.innerHTML = galleryElements(data.hits);
     const lightbox = new SimpleLightbox('.gallery a', {
